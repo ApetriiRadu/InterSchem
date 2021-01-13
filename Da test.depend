@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1610525881 source:e:\codeblocks\da test\main.cpp
+	<bits/stdc++.h>
+	<stdio.h>
+	<winbgim.h>
+	<string.h>
+	<stdlib.h>
+
