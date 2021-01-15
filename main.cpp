@@ -395,6 +395,7 @@ int viz[100];
 int dfs(int nod)
 {
     viz[nod]=1;
+    memset(e,0,sizeof(e));
     if(B[nod].tip=='s')
         {for(auto v:vecini[nod])
             if(!viz[v])
@@ -412,7 +413,7 @@ int dfs(int nod)
     else if(B[nod].tip=='o')
     {
         //calculam si afisam expresia
-        memset(e,0,sizeof(e));
+        //memset(e,0,sizeof(e));
         int lg=-1;
         for(int j=0;B[nod].e.text[j];j++)
         {
@@ -463,12 +464,105 @@ int dfs(int nod)
             if(!viz[v])
             return dfs(v);
     }
-    return 1;
-    /*else if(B[nod].tip=='d')
+    else if(B[nod].tip=='d')
     {
         //calculam expresiile si facem if-ul
+        vector<int> dec;
+        for(auto v:vecini[nod])
+        {
+            if(!viz[v])
+                dec.push_back(v);
+        }
+        int y=dec[0];
+        int n=dec[1];
+        if(B[y].x>B[n].x)
+            swap(y,n);
+
+        int simbol;
+        int i=0;
+        int s,d;
+        while(B[nod].e.text[i]!='<' && B[nod].e.text[i]!='>' && B[nod].e.text[i]!='=')
+             e[i]=B[nod].e.text[i],i++;
+
+        if(B[nod].e.text[i]=='=')
+          simbol=1,i++;//egalitate
+          else
+            if(B[nod].e.text[i]=='<')
+          {
+              if(B[nod].e.text[i+1]=='=')
+                simbol=3,i++;//mai mic egal
+                else
+                    simbol=2;//mai mic strict
+          }
+          else
+            if(B[nod].e.text[i]=='>')
+          {
+              if(B[nod].e.text[i+1]=='=')
+                simbol=5,i++;//mai mare egal
+                else
+                    simbol=4;//mai mare strict
+          }
+          else
+            if(B[nod].e.text[i]=='!')
+            simbol=6,i++;
+         i++;
+         s=eval();
+         int acum=0;
+         memset(e,0,sizeof(e));
+         while(B[nod].e.text[i])
+             e[acum]=B[nod].e.text[i],i++,acum++;
+         d=eval();
+         if(simbol==1)
+         {
+             //a==b
+             if(s==d)
+             return dfs(y);
+             else
+                return dfs(n);
+         }
+         else if(simbol==2)
+         {
+             //a<b
+             if(s<d)
+             return dfs(y);
+             else
+                return dfs(n);
+         }
+         else if(simbol==3)
+         {
+             //a<=b
+             if(s<=d)
+             return dfs(y);
+             else
+                return dfs(n);
+         }
+         else if(simbol==4)
+         {
+             //a>b
+             if(s>d)
+             return dfs(y);
+             else
+                return dfs(n);
+         }
+         else if(simbol==5)
+         {
+             //a>=b
+             if(s>=d)
+             return dfs(y);
+             else
+                return dfs(n);
+         }
+         else if(simbol==6)
+         {
+             //a!=b
+             if(s!=d)
+                return dfs(y);
+             else
+                return dfs(n);
+         }
+
     }
-*/
+ return 1;
 
 }
 
@@ -529,6 +623,7 @@ else while (e[p]>='0'&&e[p]<='9')
 return r;
 }
 
+
 int main()
 {
     ifstream fin;
@@ -536,6 +631,11 @@ int main()
 
     while(1)
     {
+    memset(activ,0,sizeof(activ));
+    memset(linie,0,sizeof(linie));
+    memset(B,NULL,sizeof(B));
+    nrBlocuri=0;
+    l=0;
     cout<<"Introduceti instructiunea \n";
     cin>>s;
     if(s=="edit")
@@ -543,7 +643,6 @@ int main()
     cin>>s;
     //ifstream fin(s);
     fin.open(s);
-
     if(fin)
     {
         initwindow(width,height,"InterSchem");
@@ -577,6 +676,7 @@ int main()
     {
         initwindow(width,height,"InterSchem");
         int xd=1820,yd=100;
+        r=0;
         for(int i=0; i<=5; i++)
         {
             nrBlocuri++;
@@ -713,7 +813,7 @@ int main()
                 if(B[i.second].tip=='t')
                   stop=i.second,contor2++;
         }
-        if(contor!=1 || contor2!=1)
+        if(contor==0 || contor2==0)
         {
             cout<<"Schema invalida \n";
         }
