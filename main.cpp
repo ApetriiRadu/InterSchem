@@ -224,20 +224,20 @@ void onLeftClick()
                                         memset(B[i].e.text,0,sizeof(B[i].e.text));
                                         while(ok)
                                         {
-                                        int z=getch();
-                                        if(z!=0)
-                                        {
-                                            char c=(char) z;
-                                            if(c!=VK_RETURN)
-                                                B[i].e.text[++lg]=c;
-                                            else
-                                                ok=0;
+                                            int z=getch();
+                                            if(z!=0)
+                                            {
+                                                char c=(char) z;
+                                                if(c!=VK_RETURN)
+                                                    B[i].e.text[++lg]=c;
+                                                else
+                                                    ok=0;
 
-                                        }
-                                        else
-                                        {
-                                            getch();
-                                        }
+                                            }
+                                            else
+                                            {
+                                                getch();
+                                            }
                                         }
                                     }
                                     if(B[i].tip=='c')
@@ -249,23 +249,23 @@ void onLeftClick()
                                         char input[50];
                                         while(ok)
                                         {
-                                        int z=getch();
-                                        if(z!=0)
-                                        {
-                                            char c=(char) z;
-                                            if(c!=VK_RETURN)
-                                                input[++lg]=c;
-                                            else
-                                                ok=0;
+                                            int z=getch();
+                                            if(z!=0)
+                                            {
+                                                char c=(char) z;
+                                                if(c!=VK_RETURN)
+                                                    input[++lg]=c;
+                                                else
+                                                    ok=0;
 
-                                        }
-                                        else
-                                        {
-                                            getch();
-                                        }
+                                            }
+                                            else
+                                            {
+                                                getch();
+                                            }
                                         }
                                         B[i].v.nume=input[0];
-                                        for(int j=2;j<=lg;j++)
+                                        for(int j=2; j<=lg; j++)
                                             B[i].e.text[++acum]=input[j];
                                     }
                                     if(B[i].tip=='d')
@@ -275,20 +275,20 @@ void onLeftClick()
                                         memset(B[i].e.text,0,sizeof(B[i].e.text));
                                         while(ok)
                                         {
-                                        int z=getch();
-                                        if(z!=0)
-                                        {
-                                            char c=(char) z;
-                                            if(c!=VK_RETURN)
-                                                B[i].e.text[++lg]=c;
-                                            else
-                                                ok=0;
+                                            int z=getch();
+                                            if(z!=0)
+                                            {
+                                                char c=(char) z;
+                                                if(c!=VK_RETURN)
+                                                    B[i].e.text[++lg]=c;
+                                                else
+                                                    ok=0;
 
-                                        }
-                                        else
-                                        {
-                                            getch();
-                                        }
+                                            }
+                                            else
+                                            {
+                                                getch();
+                                            }
                                         }
                                     }
                                 }
@@ -397,10 +397,11 @@ int dfs(int nod)
     viz[nod]=1;
     memset(e,0,sizeof(e));
     if(B[nod].tip=='s')
-        {for(auto v:vecini[nod])
+    {
+        for(auto v:vecini[nod])
             if(!viz[v])
-             return dfs(v);
-        }
+                return dfs(v);
+    }
     else if(B[nod].tip=='t') return 0;
     else if(B[nod].tip=='i')
     {
@@ -408,14 +409,14 @@ int dfs(int nod)
         cin>>variabile[B[nod].v.nume];
         for(auto v:vecini[nod])
             if(!viz[v])
-            return dfs(v);
+                return dfs(v);
     }
     else if(B[nod].tip=='o')
     {
         //calculam si afisam expresia
         //memset(e,0,sizeof(e));
         int lg=-1;
-        for(int j=0;B[nod].e.text[j];j++)
+        for(int j=0; B[nod].e.text[j]; j++)
         {
             char c=B[nod].e.text[j];
             if(!variabile[c])
@@ -428,21 +429,21 @@ int dfs(int nod)
                 ss << variabile[c];
                 string s = ss.str();
                 //string s= to_string(variabile[c]);
-                for(int i=0;i<s.size();i++)
+                for(int i=0; i<s.size(); i++)
                     e[++lg]=s[i];
             }
         }
         cout<<eval()<<endl;
         for(auto v:vecini[nod])
             if(!viz[v])
-            return dfs(v);
+                return dfs(v);
     }
     else if(B[nod].tip=='c')
     {
         //facem expresia si atribuiea
-         memset(e,0,sizeof(e));
+        memset(e,0,sizeof(e));
         int lg=-1;
-        for(int j=0;B[nod].e.text[j];j++)
+        for(int j=0; B[nod].e.text[j]; j++)
         {
             char c=B[nod].e.text[j];
             if(!variabile[c])
@@ -455,14 +456,14 @@ int dfs(int nod)
                 ss << variabile[c];
                 string s = ss.str();
                 //string s= to_string(variabile[c]);
-                for(int i=0;i<s.size();i++)
+                for(int i=0; i<s.size(); i++)
                     e[++lg]=s[i];
             }
         }
         variabile[B[nod].v.nume]=eval();
         for(auto v:vecini[nod])
             if(!viz[v])
-            return dfs(v);
+                return dfs(v);
     }
     else if(B[nod].tip=='d')
     {
@@ -482,145 +483,193 @@ int dfs(int nod)
         int i=0;
         int s,d;
         while(B[nod].e.text[i]!='<' && B[nod].e.text[i]!='>' && B[nod].e.text[i]!='=')
-             e[i]=B[nod].e.text[i],i++;
+            e[i]=B[nod].e.text[i],i++;
 
         if(B[nod].e.text[i]=='=')
-          simbol=1,i++;//egalitate
-          else
-            if(B[nod].e.text[i]=='<')
-          {
-              if(B[nod].e.text[i+1]=='=')
+            simbol=1,i++;//egalitate
+        else if(B[nod].e.text[i]=='<')
+        {
+            if(B[nod].e.text[i+1]=='=')
                 simbol=3,i++;//mai mic egal
-                else
-                    simbol=2;//mai mic strict
-          }
-          else
-            if(B[nod].e.text[i]=='>')
-          {
-              if(B[nod].e.text[i+1]=='=')
+            else
+                simbol=2;//mai mic strict
+        }
+        else if(B[nod].e.text[i]=='>')
+        {
+            if(B[nod].e.text[i+1]=='=')
                 simbol=5,i++;//mai mare egal
-                else
-                    simbol=4;//mai mare strict
-          }
-          else
-            if(B[nod].e.text[i]=='!')
+            else
+                simbol=4;//mai mare strict
+        }
+        else if(B[nod].e.text[i]=='!')
             simbol=6,i++;
-         i++;
-         s=eval();
-         int acum=0;
-         memset(e,0,sizeof(e));
-         while(B[nod].e.text[i])
-             e[acum]=B[nod].e.text[i],i++,acum++;
-         d=eval();
-         if(simbol==1)
-         {
-             //a==b
-             if(s==d)
-             return dfs(y);
-             else
-                return dfs(n);
-         }
-         else if(simbol==2)
-         {
-             //a<b
-             if(s<d)
-             return dfs(y);
-             else
-                return dfs(n);
-         }
-         else if(simbol==3)
-         {
-             //a<=b
-             if(s<=d)
-             return dfs(y);
-             else
-                return dfs(n);
-         }
-         else if(simbol==4)
-         {
-             //a>b
-             if(s>d)
-             return dfs(y);
-             else
-                return dfs(n);
-         }
-         else if(simbol==5)
-         {
-             //a>=b
-             if(s>=d)
-             return dfs(y);
-             else
-                return dfs(n);
-         }
-         else if(simbol==6)
-         {
-             //a!=b
-             if(s!=d)
+        i++;
+
+        char expr[150];
+        for(int j=0; e[j]; j++)
+            expr[j]=e[j];
+        memset(e,0,sizeof(e));
+        int lg=-1;
+        for(int j=0; expr[j]; j++)
+        {
+            char c=expr[j];
+
+            if(!variabile[c])
+            {
+                e[++lg]=c;
+            }
+            else
+            {
+                stringstream ss;
+                ss << variabile[c];
+                string s = ss.str();
+                //string s= to_string(variabile[c]);
+                for(int i=0; i<s.size(); i++)
+                    e[++lg]=s[i];
+            }
+        }
+
+        s=eval();
+
+        int acum=0;
+        memset(e,0,sizeof(e));
+        while(B[nod].e.text[i])
+            e[acum]=B[nod].e.text[i],i++,acum++;
+        memset(expr,0,sizeof(expr));
+        for(int j=0; e[j]; j++)
+            expr[j]=e[j];
+        memset(e,0,sizeof(e));
+        lg=-1;
+        for(int j=0; expr[j]; j++)
+        {
+            char c=expr[j];
+            if(!variabile[c])
+            {
+                e[++lg]=c;
+            }
+            else
+            {
+                stringstream ss;
+                ss << variabile[c];
+                string s = ss.str();
+                //string s= to_string(variabile[c]);
+                for(int i=0; i<s.size(); i++)
+                    e[++lg]=s[i];
+            }
+        }
+        d=eval();
+        if(simbol==1)
+        {
+            //a==b
+            if(s==d)
                 return dfs(y);
-             else
+            else
                 return dfs(n);
-         }
+        }
+        else if(simbol==2)
+        {
+            //a<b
+            if(s<d)
+                return dfs(y);
+            else
+                return dfs(n);
+        }
+        else if(simbol==3)
+        {
+            //a<=b
+            if(s<=d)
+                return dfs(y);
+            else
+                return dfs(n);
+        }
+        else if(simbol==4)
+        {
+            //a>b
+            if(s>d)
+                return dfs(y);
+            else
+                return dfs(n);
+        }
+        else if(simbol==5)
+        {
+            //a>=b
+            if(s>=d)
+                return dfs(y);
+            else
+                return dfs(n);
+        }
+        else if(simbol==6)
+        {
+            //a!=b
+            if(s!=d)
+                return dfs(y);
+            else
+                return dfs(n);
+        }
 
     }
- return 1;
+    return 1;
 
 }
 
 
 
 
-int eval(){
-int r;
-p=0;
-i=0;
-r= t();
-while (e[p]=='-'||e[p]=='+')
+int eval()
 {
-    if (e[p]=='-')
+    int r;
+    p=0;
+    i=0;
+    r= t();
+    while (e[p]=='-'||e[p]=='+')
+    {
+        if (e[p]=='-')
+        {
+            p++;
+            r-=t();
+        }
+        else
+        {
+            p++;
+            r+=t();
+        }
+    }
+    return r;
+}
+int t()
+{
+    int r=f();
+    while (e[p]=='*'||e[p]=='/')
+    {
+        if (e[p]=='/')
+        {
+            p++;
+            r/=f();
+        }
+        else
+        {
+            p++;
+            r*=f();
+        }
+    }
+    return r;
+}
+
+int f()
+{
+    int r=0;
+    if (e[p]=='(')
     {
         p++;
-        r-=t();
-    }
-    else
-    {
+        r=eval();
         p++;
-        r+=t();
     }
-}
-return r;
-}
-int t(){
-int r=f();
-while (e[p]=='*'||e[p]=='/')
-{
-    if (e[p]=='/')
-    {
-        p++;
-        r/=f();
-    }
-    else
-    {
-        p++;
-        r*=f();
-    }
-}
-return r;
-}
-
-int f(){
-int r=0;
-if (e[p]=='(')
-{
-    p++;
-    r=eval();
-    p++;
-}
-else while (e[p]>='0'&&e[p]<='9')
-{
-    r=r*10+e[p]-'0';
-    p++;
-}
-return r;
+    else while (e[p]>='0'&&e[p]<='9')
+        {
+            r=r*10+e[p]-'0';
+            p++;
+        }
+    return r;
 }
 
 
@@ -631,209 +680,203 @@ int main()
 
     while(1)
     {
-    memset(activ,0,sizeof(activ));
-    memset(linie,0,sizeof(linie));
-    memset(B,NULL,sizeof(B));
-    nrBlocuri=0;
-    l=0;
-    cout<<"Introduceti instructiunea \n";
-    cin>>s;
-    if(s=="edit")
-    {
-    cin>>s;
-    //ifstream fin(s);
-    fin.open(s);
-    if(fin)
-    {
-        initwindow(width,height,"InterSchem");
-        fin>>nrBlocuri;
-        for(int i=1; i<=nrBlocuri; i++)
-        {
-            string sir;
-            fin>>B[i].tip;
-            fin>>B[i].v.nume>>B[i].v.val;
-            fin>>sir;
-            for(int j=0; j<sir.size(); j++)
-                B[i].e.text[j]=sir[j];
-            fin>>B[i].e.val;
-            fin>>B[i].x>>B[i].y>>B[i].latime>>B[i].inaltime;
-        }
-        for(int i=1; i<=nrBlocuri; i++)
-            fin>>activ[i];
-        fin>>l;
-        for(int i=1; i<=l; i++)
-            fin>>linie[i].first>>linie[i].second;
-
-        refreshImage();
-        cout<<"exista deja \n";
-        do
-        {
-            onClick();
-        }
-        while (esc);
-    }
-    else
-    {
-        initwindow(width,height,"InterSchem");
-        int xd=1820,yd=100;
-        r=0;
-        for(int i=0; i<=5; i++)
-        {
-            nrBlocuri++;
-            switch(r)
-            {
-            case 0:
-                B[nrBlocuri].tip='s';
-                break;
-            case 1:
-                B[nrBlocuri].tip='t';
-                break;
-            case 2:
-                B[nrBlocuri].tip='c';
-                B[nrBlocuri].v.nume='X';
-                strcpy(B[nrBlocuri].e.text,"A+B");
-                break;
-            case 3:
-                B[nrBlocuri].tip='i';
-                B[nrBlocuri].v.nume='X';
-                break;
-            case 4:
-                B[nrBlocuri].tip='o';
-                strcpy(B[nrBlocuri].e.text,"A*B-X");
-                break;
-            case 5:
-                B[nrBlocuri].tip='d';
-                strcpy(B[nrBlocuri].e.text,"X^2<Y+3");
-                break;
-            }
-            B[nrBlocuri].x=xd;
-            B[nrBlocuri].y=yd;
-            activ[nrBlocuri]=1;
-            deseneaza(B[nrBlocuri],WHITE);
-            r++;
-            yd+=150;
-        }
-        r=0;
-
-        do
-        {
-            onClick();
-        }
-        while (esc);
-
-    }
-
-    fin.close();
-    //ofstream fout(s);
-    fout.open(s);
-    fout<<nrBlocuri<<endl;
-
-    for(int i=1; i<=nrBlocuri; i++)
-    {
-        bloc o=B[i];
-        fout<<o.tip<<' ';
-        if(o.v.nume)
-            fout<<o.v.nume;
-        else
-            fout<<'-';
-        fout<<' '<<o.v.val<<' ';
-        if(strlen(o.e.text)>0)
-            fout<<o.e.text;
-        else
-            fout<<"none";
-        fout<<' '<<o.e.val<<' ';
-        fout<<o.x<<' '<<o.y<<' '<<o.latime<<' '<<o.inaltime<<' ';
-        fout<<endl;
-    }
-    for(int i=1; i<=nrBlocuri; i++)
-        fout<<activ[i]<<' ';
-    fout<<endl;
-    fout<<l<<endl;
-    for(int i=1; i<=l; i++)
-    {
-        fout<<linie[i].first<<' '<<linie[i].second;
-        fout<<endl;
-    }
-    fout.close();
-    esc=1;
-    closegraph();
-    }
-    else
-    if(s=="cpp")
-    {
-        cout<<"Codificare \n";
-    }
-    else
-    if(s=="exe")
-    {
-        cout<<"Executare \n";
-        for(int j=0;j<80;j++)
-            vecini[j].clear();
+        memset(activ,0,sizeof(activ));
+        memset(linie,0,sizeof(linie));
+        memset(B,NULL,sizeof(B));
+        nrBlocuri=0;
+        l=0;
+        cout<<"Introduceti instructiunea \n";
         cin>>s;
-        fin.open(s);
-        if(fin)
+        if(s=="edit")
         {
-        fin>>nrBlocuri;
-        for(int i=1; i<=nrBlocuri; i++)
-        {
-            string sir;
-            fin>>B[i].tip;
-            fin>>B[i].v.nume>>B[i].v.val;
-            fin>>sir;
-            for(int j=0; j<sir.size(); j++)
-                B[i].e.text[j]=sir[j];
-            fin>>B[i].e.val;
-            fin>>B[i].x>>B[i].y>>B[i].latime>>B[i].inaltime;
-        }
-        for(int i=1; i<=nrBlocuri; i++)
-            fin>>activ[i];
-        fin>>l;
-        for(int i=1; i<=l; i++)
-            fin>>linie[i].first>>linie[i].second;
-        fin.close();
+            cin>>s;
+            //ifstream fin(s);
+            fin.open(s);
+            if(fin)
+            {
+                initwindow(width,height,"InterSchem");
+                fin>>nrBlocuri;
+                for(int i=1; i<=nrBlocuri; i++)
+                {
+                    string sir;
+                    fin>>B[i].tip;
+                    fin>>B[i].v.nume>>B[i].v.val;
+                    fin>>sir;
+                    for(int j=0; j<sir.size(); j++)
+                        B[i].e.text[j]=sir[j];
+                    fin>>B[i].e.val;
+                    fin>>B[i].x>>B[i].y>>B[i].latime>>B[i].inaltime;
+                }
+                for(int i=1; i<=nrBlocuri; i++)
+                    fin>>activ[i];
+                fin>>l;
+                for(int i=1; i<=l; i++)
+                    fin>>linie[i].first>>linie[i].second;
 
-        int start=0;
-        int stop=0;
-        int contor=0;
-        int contor2=0;
-        for(auto i:linie)
-        if(activ[i.first] && activ[i.second])
-        {
-            vecini[i.first].push_back(i.second);
-            vecini[i.second].push_back(i.first);
-            if(B[i.first].tip=='s')
-                start=i.first,contor++;
+                refreshImage();
+                cout<<"exista deja \n";
+                do
+                {
+                    onClick();
+                }
+                while (esc);
+            }
             else
-                if(B[i.second].tip=='s')
-                  start=i.second,contor++;
+            {
+                initwindow(width,height,"InterSchem");
+                int xd=1820,yd=100;
+                r=0;
+                for(int i=0; i<=5; i++)
+                {
+                    nrBlocuri++;
+                    switch(r)
+                    {
+                    case 0:
+                        B[nrBlocuri].tip='s';
+                        break;
+                    case 1:
+                        B[nrBlocuri].tip='t';
+                        break;
+                    case 2:
+                        B[nrBlocuri].tip='c';
+                        B[nrBlocuri].v.nume='X';
+                        strcpy(B[nrBlocuri].e.text,"A+B");
+                        break;
+                    case 3:
+                        B[nrBlocuri].tip='i';
+                        B[nrBlocuri].v.nume='X';
+                        break;
+                    case 4:
+                        B[nrBlocuri].tip='o';
+                        strcpy(B[nrBlocuri].e.text,"A*B-X");
+                        break;
+                    case 5:
+                        B[nrBlocuri].tip='d';
+                        strcpy(B[nrBlocuri].e.text,"X^2<Y+3");
+                        break;
+                    }
+                    B[nrBlocuri].x=xd;
+                    B[nrBlocuri].y=yd;
+                    activ[nrBlocuri]=1;
+                    deseneaza(B[nrBlocuri],WHITE);
+                    r++;
+                    yd+=150;
+                }
+                r=0;
 
-            if(B[i.first].tip=='t')
-                stop=i.first,contor2++;
+                do
+                {
+                    onClick();
+                }
+                while (esc);
+
+            }
+
+            fin.close();
+            //ofstream fout(s);
+            fout.open(s);
+            fout<<nrBlocuri<<endl;
+
+            for(int i=1; i<=nrBlocuri; i++)
+            {
+                bloc o=B[i];
+                fout<<o.tip<<' ';
+                if(o.v.nume)
+                    fout<<o.v.nume;
+                else
+                    fout<<'-';
+                fout<<' '<<o.v.val<<' ';
+                if(strlen(o.e.text)>0)
+                    fout<<o.e.text;
+                else
+                    fout<<"none";
+                fout<<' '<<o.e.val<<' ';
+                fout<<o.x<<' '<<o.y<<' '<<o.latime<<' '<<o.inaltime<<' ';
+                fout<<endl;
+            }
+            for(int i=1; i<=nrBlocuri; i++)
+                fout<<activ[i]<<' ';
+            fout<<endl;
+            fout<<l<<endl;
+            for(int i=1; i<=l; i++)
+            {
+                fout<<linie[i].first<<' '<<linie[i].second;
+                fout<<endl;
+            }
+            fout.close();
+            esc=1;
+            closegraph();
+        }
+        else if(s=="cpp")
+        {
+            cout<<"Codificare \n";
+        }
+        else if(s=="exe")
+        {
+            cout<<"Executare \n";
+            for(int j=0; j<80; j++)
+                vecini[j].clear();
+            cin>>s;
+            fin.open(s);
+            if(fin)
+            {
+                fin>>nrBlocuri;
+                for(int i=1; i<=nrBlocuri; i++)
+                {
+                    string sir;
+                    fin>>B[i].tip;
+                    fin>>B[i].v.nume>>B[i].v.val;
+                    fin>>sir;
+                    for(int j=0; j<sir.size(); j++)
+                        B[i].e.text[j]=sir[j];
+                    fin>>B[i].e.val;
+                    fin>>B[i].x>>B[i].y>>B[i].latime>>B[i].inaltime;
+                }
+                for(int i=1; i<=nrBlocuri; i++)
+                    fin>>activ[i];
+                fin>>l;
+                for(int i=1; i<=l; i++)
+                    fin>>linie[i].first>>linie[i].second;
+                fin.close();
+
+                int start=0;
+                int stop=0;
+                int contor=0;
+                int contor2=0;
+                for(auto i:linie)
+                    if(activ[i.first] && activ[i.second])
+                    {
+                        vecini[i.first].push_back(i.second);
+                        vecini[i.second].push_back(i.first);
+                        if(B[i.first].tip=='s')
+                            start=i.first,contor++;
+                        else if(B[i.second].tip=='s')
+                            start=i.second,contor++;
+
+                        if(B[i.first].tip=='t')
+                            stop=i.first,contor2++;
+                        else if(B[i.second].tip=='t')
+                            stop=i.second,contor2++;
+                    }
+                if(contor==0 || contor2==0)
+                {
+                    cout<<"Schema invalida \n";
+                }
+                else
+                {
+                    cout<<"Schema valida \n";
+                    memset(viz,0,sizeof(viz));
+                    int status=dfs(start);
+                    cout<<"Schema s-a executat cu statusul de return "<<status<<endl;
+
+                }
+            }
             else
-                if(B[i.second].tip=='t')
-                  stop=i.second,contor2++;
+            {
+                cout<<"Nu exista aceasta schema \n";
+            }
         }
-        if(contor==0 || contor2==0)
-        {
-            cout<<"Schema invalida \n";
-        }
-        else
-        {
-            cout<<"Schema valida \n";
-            memset(viz,0,sizeof(viz));
-            int status=dfs(start);
-            cout<<"Schema s-a executat cu statusul de return "<<status<<endl;
-
-        }
-        }
-        else
-        {
-            cout<<"Nu exista aceasta schema \n";
-        }
-
-    }
-    else
-        if(s=="exit")
+        else if(s=="exit")
         {
             cout<<"Am terminat de executat! \n";
             return 0;
