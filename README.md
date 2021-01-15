@@ -6,8 +6,6 @@ Apetrii Radu-Andrei
 
 Programul permite reprezentarea schemelor logice, salvarea acestora in fisiere, deschiderea schemelor logice din fisiere.  
 De dezvoltat in continuare:
- - Posibilitatea schimbarii continutului blocurilor
- - Executarea schemei logice
  - Codificarea schemei logice in C++
 
 Instructiuni:
