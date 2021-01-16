@@ -4,6 +4,8 @@ Proiect InterSchem realizat de:
 Antohi Robert  
 Apetrii Radu-Andrei  
 
+Prezentare Youtube: https://youtu.be/YsotnyoQc70  
+
 Programul permite reprezentarea schemelor logice, salvarea acestora in fisiere, deschiderea schemelor logice din fisiere si executarea lor.  
 De dezvoltat in continuare:
  - Codificarea schemei logice in C++
@@ -21,5 +23,5 @@ Instructiuni pentru comenzile din consola:
  - Pentru a desena o legatura intre 2 blocuri este necesara selectarea acestora folosind click dreapta
  - Pentru a muta un bloc, se da click stanga pe acesta si se apasa click dreapta pe noua pozitie; legaturile cu alte blocuri se muta in timp real, odata cu blocul respectiv
  - Pentru a sterge un bloc, se da click stanga pe acesta si se apasa tasta Backspace; legaturile acestuia cu celelalte blocuri se sterg, de asemenea
- - Pentru a edita continutul unui bloc, se da click stanga pe acesta pentru a fi selectat si se apasa tasta "Insert"; dupa ce terminam de scris continutul dorit, se apasa tasta Enter, iar textul scris de la tastatura va aparea pe ecran, in interiorul blocului. Nota: Blocurile de START si STOP nu pot fi editate! 
+ - Pentru a edita continutul unui bloc, se da click stanga pe acesta pentru a fi selectat si se apasa tasta "Insert"; dupa ce terminam de scris continutul dorit, se apasa tasta Enter, iar textul scris de la tastatura va aparea pe ecran, in interiorul blocului; apasand pe click dreapta, vom finaliza editarea blocului selectat. Nota: Blocurile de START si STOP nu pot fi editate! 
  - Dupa ce am terminat de editat schema, se apasa tasta Esc pentru a salva si a reveni la meniul din consola.
