@@ -14,7 +14,7 @@ Instructiuni pentru comenzile din consola:
  - Comanda "exe <nume_fisier>" ne permite sa executam schema logica salvata in fisierul cu numele dorit; daca fisierul nu exista, in consola va aparea o eroare
  - Comanda "cpp <nume_fisier>" ne permite sa vizualizam codificarea schemei logice din fisierul cu numele dorit
  - Comanda "exit" ne permite sa incheiem rularea programului
- - Daca introducem o comanda invalida, vom fi atentionati si indemnati sa citim/recitim README-ul
+ - Daca introducem o comanda invalida, vom fi atentionati si indemnati sa citim/recitim README-ul  
 Instructiuni pentru editarea schemei logice din fereastra grafica: 
  - Pentru a adauga un bloc logic in schema si a-l desena pe ecran se selecteaza tipul de bloc din dreapta ecranului si se plaseaza in locul dorit cu click stanga
  - Pentru a desena o legatura intre 2 blocuri este necesara selectarea acestora folosind click dreapta
