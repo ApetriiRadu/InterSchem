@@ -1,0 +1,13 @@
+a) Link catre GitHub, unde se afla ReadMe-ul si link-ul catre videoclipul de pe Youtube:
+https://github.com/TheDarkMau/InterSchem
+https://youtu.be/YsotnyoQc70
+
+b)Elemente deosebite:
+- Upload-ul proiectului pe GitHub
+- Claritatea, eficienta si lizibilitatea codului
+Ne-am propus sa obtinem un cod eficient, cu un numar relativ mic de randuri, care poate fi citit si inteles usor.
+Acest obiectiv ne-a ajutat in momentele de debug si permite evaluatorului o intelegere rapida a codului.
+
+c) Procentaj: 50%/50%
+Proiectul a fost facut cu share screen pe Discord, cooperand, astfel, de la inceputul pana la finalul proiectului.
+Toate elementele codului au fost realizate impreuna, rezultand astfel o distributie a muncii de 50/50. 
